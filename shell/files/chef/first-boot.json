@@ -1,0 +1,3 @@
+{
+  "run_list": [ "recipe[myweb::default]", "recipe[myweb::nginx]" ]
+}

@@ -1,0 +1,2 @@
+source "https://supermarket.getchef.com"
+cookbook 'myweb', path: 'chef/site-cookbooks/myweb'

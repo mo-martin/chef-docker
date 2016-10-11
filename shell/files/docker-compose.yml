@@ -1,0 +1,26 @@
+version: '2'
+
+# Build a data volume container with the chef cookbooks on it.
+services:
+  chefdata:
+    build: chef
+
+  # Attach the image containing the Chef installation
+  chef:
+    image: centos:7
+    # Override default command to use this container as a volume container
+    command: /bin/true
+
+  # Build the application container using Chef and the cookbooks on the attached volumes
+  cdnginx:
+    build:
+      context: .
+    volumes_from:
+     - chefdata
+     - chef
+    depends_on:
+     - chefdata
+     - chef
+    environment:
+      PATH: "opt/chef/bin:$PATH"
+    entrypoint: /usr/bin/startup.sh
