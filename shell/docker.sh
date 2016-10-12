@@ -23,13 +23,14 @@ sudo usermod -aG docker vagrant
 sudo cp -f /home/vagrant/synced/shell/files/chef/zero.rb /home/vagrant/cd-nginx/chef/zero.rb
 sudo cp -f /home/vagrant/synced/shell/files/chef/first-boot.json /home/vagrant/cd-nginx/chef/first-boot.json
 sudo cp -f /home/vagrant/synced/shell/files/chef/Dockerfile /home/vagrant/cd-nginx/chef/Dockerfile
-sudo cp -f /home/vagrant/synced/shell/files/chef/Berksfile /home/vagrant/cd-nginx/chef/Berksfile
+sudo cp -f /home/vagrant/synced/shell/files/Berksfile /home/vagrant/cd-nginx/Berksfile
 sudo cp -f /home/vagrant/synced/shell/files/Dockerfile /home/vagrant/cd-nginx/Dockerfile
 sudo cp -f /home/vagrant/synced/shell/files/startup.sh /home/vagrant/cd-nginx/startup.sh
 sudo cp -f /home/vagrant/synced/shell/files/docker-compose.yml /home/vagrant/cd-nginx/docker-compose.yml
+sudo cp -f
 # file permissions
 sudo chown -R vagrant:docker /home/vagrant/cd-nginx
-sudo chmod -R 776 /home/vagrant/cd-nginx
+sudo chmod -R 777 /home/vagrant/cd-nginx
 # chef install
 sudo apt-get update
 sudo apt-get install -y python-pip
@@ -40,4 +41,5 @@ sudo mkdir -p /home/vagrant/cd-nginx/chef/site-cookbooks
 pushd /home/vagrant/cd-nginx
 berks install
 berks vendor chef/cookbooks
+sudo chmod 777 Berksfile.lock
 popd

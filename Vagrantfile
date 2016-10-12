@@ -6,6 +6,7 @@ Vagrant.configure("2") do |config|
     docker.vm.hostname = "Docker"
     docker.vm.synced_folder "~/sparta/multi-vagrant-project/app", "/home/vagrant/synced/app"
     docker.vm.synced_folder "~/sparta/multi-vagrant-project/api", "/home/vagrant/synced/api"
+    docker.vm.synced_folder "~/sparta/multi-vagrant-project/chef-docker/database", "/home/vagrant/synced/db"
     docker.vm.synced_folder "docker/", "/home/vagrant/synced/docker"
     docker.vm.synced_folder "shell/", "/home/vagrant/synced/shell"
     docker.vm.synced_folder "site-cookbooks/", "/home/vagrant/cd-nginx/chef/site-cookbooks"

@@ -20,17 +20,20 @@ mkdir -p /tmp/node-app/app
 mkdir -p /tmp/node-api/api
 mkdir -p /tmp/node-db/db
 
-cp -r ~/sparta/multi-vagrant-project/app/ /tmp/node-app/app
-cp -r ~/sparta/multi-vagrant-project/api/ /tmp/node-api/api
-cp -r ~/sparta/multi-vagrant-project/servers/database/ /tmp/node-db/db
+cp -r /home/vagrant/synced/app/. /tmp/node-app/app/
+cp -r /home/vagrant/synced/api/. /tmp/node-api/api/
+cp -r /home/vagrant/synced/db/. /tmp/node-db/db/
+
 rm -rf /tmp/node-app/app/.git
 rm -rf /tmp/node-app/app/.gitignore
 rm -rf /tmp/node-api/api/.git
 rm -rf /tmp/node-api/api/.gitignore
+rm -rf /tmp/node-db/db/.git
+rm -rf /tmp/node-db/db/.gitignore
 
-cp -r /tmp/node-app/app/ ./my-node-app/app
-cp -r /tmp/node-api/api/ ./my-node-api/api
-cp -r /tmp/node-db/db/ ./my-node-db/db
+cp -r /tmp/node-app/app/. ./my-node-app/app/
+cp -r /tmp/node-api/api/. ./my-node-api/api/
+cp -r /tmp/node-db/db/. ./my-node-db/db/
 
 pushd my-nodejs
 docker build --tag my-nodejs:latest .
@@ -44,8 +47,10 @@ popd
 pushd my-node-db
 docker build --tag my-node-db:latest .
 popd
+pushd my-mongo-data
+docker build --tag my-mongo-data:latest .
+popd
 
-# Mongo
 echo -e "\033[0;31mChecking for my-mongo-data \033[0m"
 set +e
 docker ps -a | grep my-mongo-data > /dev/null
@@ -60,6 +65,6 @@ else
 fi
 
 docker run --name moses-db --volumes-from my-mongo-data -d my-node-db:latest
-docker run --name moses-api --link moses-db:db -e DB_URL=mongodb://db/Poker -d my-node-api:latest
-docker run --name moses-app -p 3000:3000 --link moses-api:api -e API_URL=http://api:3000 -d my-node-app:latest
+docker run --name moses-api -p 3001:3001 --link moses-db:db -e DB_URL=mongodb://db/Poker -d my-node-api:latest
+docker run --name moses-app -p 3000:3000 --link moses-api:api -e API_URL=http://localhost:3001 -d my-node-app:latest
 docker ps -a
