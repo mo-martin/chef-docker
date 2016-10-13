@@ -20,7 +20,7 @@ services:
       - my-node-db
     environment:
       - DB_URL=mongodb://db/Poker
-  my-mongo-data:
+  my-node-data:
     build: ./my-node-data
   my-node-db:
     build: ./my-node-db
