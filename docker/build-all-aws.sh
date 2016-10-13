@@ -48,15 +48,15 @@ pushd my-node-data
 docker build --tag my-node-data:latest .
 popd
 
-# Mongo
-echo -e "\033[0;31mChecking for my-mongo-data \033[0m"
+# node data
+echo -e "\033[0;31mChecking for my-node-data \033[0m"
 set +e
 docker ps -a | grep my-node-data > /dev/null
 FOUND_MONGO=$?
 set -e
 
 if [[ "$FOUND_MONGO" == "0" ]]; then
- echo -e "\033[0;32mMongo data store already exists\033[0m"
+ echo -e "\033[0;node data store already exists\033[0m"
 else
  echo -e "\033[1;33mRunning data container\033[0m"
  docker create --name my-node-data my-node-data:latest
