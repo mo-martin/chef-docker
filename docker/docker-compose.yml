@@ -1,6 +1,6 @@
 version: '2'
 services:
-  nodeapp:
+  my-node-app:
     build: ./my-node-app
     ports:
       - "3000:3000"
@@ -10,7 +10,7 @@ services:
       - nodeapi
     environment:
       - API_URL=http://ec2-52-18-216-199.eu-west-1.compute.amazonaws.com:3001
-  nodeapi:
+  my-node-api:
     build: ./my-node-api
     ports:
       - "3001:3001"
@@ -20,10 +20,10 @@ services:
       - nodedb
     environment:
       - DB_URL=mongodb://db/Poker
-  nodedata:
-    build: ./my-mongo-data
-  nodedb:
-    build: ./my-mongo-db
+  my-mongo-data:
+    build: ./my-node-data
+  my-node-db:
+    build: ./my-node-db
     ports:
       - "27017:27017"
     volumes_from:
