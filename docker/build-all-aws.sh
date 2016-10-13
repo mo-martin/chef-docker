@@ -12,24 +12,24 @@ find ~/scripts/docker/my-node-app/app/* -type d -not -name '.gitignore' -print0 
 find ~/scripts/docker/my-node-db/db/* -type d -not -name '.gitignore' -print0 | xargs -0 rm -rf --
 set -e
 
-rm -rf /tmp/node-api/api
-rm -rf /tmp/node-app/app
-rm -rf /tmp/node-db/db
-mkdir -p /tmp/node-app/app
-mkdir -p /tmp/node-api/api
-mkdir -p /tmp/node-db/db
+rm -rf ~/pokergame/tmp/node-api/api
+rm -rf ~/pokergame/tmp/node-app/app
+rm -rf ~/pokergame/tmp/node-db/db
+mkdir -p ~/pokergame/tmp/node-app/app
+mkdir -p ~/pokergame/tmp/node-api/api
+mkdir -p ~/pokergame/tmp/node-db/db
 
-cp -r ~/pokergame/app/. /tmp/node-app/app/
-cp -r ~/pokergame/api/. /tmp/node-api/api/
-cp -r ~/scripts/database/. /tmp/node-db/db/
-rm -rf /tmp/node-app/app/.git
-rm -rf /tmp/node-app/app/.gitignore
-rm -rf /tmp/node-api/api/.git
-rm -rf /tmp/node-api/api/.gitignore
+cp -r ~/pokergame/app/. ~/pokergame/tmp/node-app/app/
+cp -r ~/pokergame/api/. ~/pokergame/tmp/node-api/api/
+cp -r ~/scripts/database/. ~/pokergame/tmp/node-db/db/
+rm -rf ~/pokergame/tmp/node-app/app/.git
+rm -rf ~/pokergame/tmp/node-app/app/.gitignore
+rm -rf ~/pokergame/tmp/node-api/api/.git
+rm -rf ~/pokergame/tmp/node-api/api/.gitignore
 
-cp -r /tmp/node-app/app/. ./my-node-app/app/
-cp -r /tmp/node-api/api/. ./my-node-api/api/
-cp -r /tmp/node-db/db/. ./my-node-db/db/
+cp -r ~/pokergame/tmp/node-app/app/. ./my-node-app/app/
+cp -r ~/pokergame/tmp/node-api/api/. ./my-node-api/api/
+cp -r ~/pokergame/tmp/node-db/db/. ./my-node-db/db/
 
 
 pushd my-node-app
