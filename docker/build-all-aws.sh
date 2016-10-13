@@ -32,16 +32,16 @@ cp -r ~/pokergame/tmp/node-api/api/. ~/scripts/docker/my-node-api/api/
 cp -r ~/pokergame/tmp/node-db/db/. ~/scripts/docker/my-node-db/db/
 
 
-pushd my-node-app
+pushd ./my-node-app
 docker build --tag my-node-app:latest .
 popd
-pushd my-node-api
+pushd ./my-node-api
 docker build --tag my-node-api:latest .
 popd
-pushd my-node-db
+pushd ./my-node-db
 docker build --tag my-node-db:latest .
 popd
-pushd my-node-data
+pushd ./my-node-data
 docker build --tag my-node-data:latest .
 popd
 
