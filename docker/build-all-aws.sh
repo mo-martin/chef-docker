@@ -27,9 +27,9 @@ rm -rf ~/pokergame/tmp/node-app/app/.gitignore
 rm -rf ~/pokergame/tmp/node-api/api/.git
 rm -rf ~/pokergame/tmp/node-api/api/.gitignore
 
-cp -r ~/pokergame/tmp/node-app/app/. ./my-node-app/app/
-cp -r ~/pokergame/tmp/node-api/api/. ./my-node-api/api/
-cp -r ~/pokergame/tmp/node-db/db/. ./my-node-db/db/
+cp -r ~/pokergame/tmp/node-app/app/. ~/scripts/docker/my-node-api/app/
+cp -r ~/pokergame/tmp/node-api/api/. ~/scripts/docker/my-node-api/api/
+cp -r ~/pokergame/tmp/node-db/db/. ~/scripts/docker/my-node-db/db/
 
 
 pushd my-node-app
