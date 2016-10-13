@@ -5,9 +5,9 @@ services:
     ports:
       - "3000:3000"
     links:
-      - nodeapi
+      - my-node-api
     depends_on:
-      - nodeapi
+      - my-node-api
     environment:
       - API_URL=http://ec2-52-18-216-199.eu-west-1.compute.amazonaws.com:3001
   my-node-api:
@@ -15,9 +15,9 @@ services:
     ports:
       - "3001:3001"
     links:
-      - nodedb
+      - my-node-db
     depends_on:
-      - nodedb
+      - my-node-db
     environment:
       - DB_URL=mongodb://db/Poker
   my-mongo-data:
@@ -27,4 +27,4 @@ services:
     ports:
       - "27017:27017"
     volumes_from:
-      - nodedata
+      - my-node-data
