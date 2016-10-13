@@ -1,4 +1,4 @@
-FROM my-nodejs:latest
+FROM node:6
 MAINTAINER moses.martin@skybettingandgaming.com
 
 ADD app /app

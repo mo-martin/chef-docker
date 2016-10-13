@@ -35,9 +35,6 @@ cp -r /tmp/node-app/app/. ./my-node-app/app/
 cp -r /tmp/node-api/api/. ./my-node-api/api/
 cp -r /tmp/node-db/db/. ./my-node-db/db/
 
-pushd my-nodejs
-docker build --tag my-nodejs:latest .
-popd
 pushd my-node-app
 docker build --tag my-node-app:latest .
 popd
@@ -51,7 +48,7 @@ pushd my-node-data
 docker build --tag my-node-data:latest .
 popd
 
-echo -e "\033[0;31mChecking for my-mongo-data \033[0m"
+echo -e "\033[0;31mChecking for my-node-data \033[0m"
 set +e
 docker ps -a | grep my-node-data > /dev/null
 FOUND_MONGO=$?

@@ -1,5 +1,4 @@
 #!/bin/bash
-# eval "$(docker-machine env default)"
 
 set +e
 docker stop moses-app
@@ -32,9 +31,7 @@ cp -r /tmp/node-app/app/. ./my-node-app/app/
 cp -r /tmp/node-api/api/. ./my-node-api/api/
 cp -r /tmp/node-db/db/. ./my-node-db/db/
 
-pushd my-nodejs
-docker build --tag my-nodejs:latest .
-popd
+
 pushd my-node-app
 docker build --tag my-node-app:latest .
 popd
