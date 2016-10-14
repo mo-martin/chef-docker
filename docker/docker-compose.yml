@@ -16,7 +16,7 @@ services:
     ports:
       - "3001:3001"
     links:
-      - my-node-db
+      - my-node-db:db
     depends_on:
       - my-node-db
     environment:
