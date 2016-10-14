@@ -9,7 +9,8 @@ services:
     depends_on:
       - my-node-api
     environment:
-      - API_URL=http://ec2-52-18-216-199.eu-west-1.compute.amazonaws.com:3001
+      - API_URL=$API_URL
+      - PORT=3000
   my-node-api:
     build: ./my-node-api
     ports:
@@ -20,11 +21,10 @@ services:
       - my-node-db
     environment:
       - DB_URL=mongodb://db/Poker
+      - PORT=3001
   my-node-data:
     build: ./my-node-data
   my-node-db:
     build: ./my-node-db
-    ports:
-      - "27017:27017"
     volumes_from:
       - my-node-data
